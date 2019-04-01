@@ -3,6 +3,7 @@ import BookshelfChanger from "./BookshelfChanger";
 
 class Book extends Component {
   render() {
+    const { book, onNewShelfSelected, shelf } = this.props;
     return (
       <div className="book">
         <div className="book-top">
@@ -11,14 +12,21 @@ class Book extends Component {
             style={{
               width: 128,
               height: 188,
-              backgroundImage:
-                'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")'
+              backgroundImage: `url(${book.imageLinks.smallThumbnail})`
             }}
           />
-          <BookshelfChanger />
-          <div className="book-title">Ender's Game</div>
-          <div className="book-authors">Orson Scott Card</div>
+          <BookshelfChanger
+            bookId={book.id}
+            shelf={shelf}
+            onNewShelfSelected={onNewShelfSelected}
+          />
         </div>
+        <div className="book-title">{book.title}</div>
+        {book.authors.map(author => (
+          <div key={author} className="book-authors">
+            {author}
+          </div>
+        ))}
       </div>
     );
   }
