@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { search, update } from "./BooksAPI";
+import { search } from "./BooksAPI";
 import Book from "./Book";
 
 class Search extends Component {
@@ -17,7 +17,7 @@ class Search extends Component {
     const updateBookShelf = books.map(book => {
       Object.keys(groupedBooks).map(groupShelf => {
         groupedBooks[groupShelf].forEach(element => {
-          console.log(book.id === element.id, book.id, element.id);
+          // console.log(book.id === element.id, book.id, element.id);
           if (book.id === element.id) {
             book.shelf = groupShelf;
           }
@@ -30,15 +30,22 @@ class Search extends Component {
 
   onQueryChange = evt => {
     const query = evt.target.value;
-    search(query).then(response => {
-      this.setState({
-        books: this.shelfSelectedLogic(response)
+    if (query) {
+      search(query).then(response => {
+        this.setState({
+          books: this.shelfSelectedLogic(response)
+        });
       });
-    });
+    } else {
+      this.setState({
+        books: []
+      });
+    }
   };
 
   render() {
     const { books } = this.state;
+    console.log(books);
     const { onNewShelfSelected } = this.props;
     return (
       <div className="search-books">
@@ -47,14 +54,6 @@ class Search extends Component {
             <button className="close-search">Close</button>
           </Link>
           <div className="search-books-input-wrapper">
-            {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
             <input
               type="text"
               onChange={this.onQueryChange}
@@ -64,15 +63,19 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {books.map(book => (
-              <li key={book.id}>
-                <Book
-                  onNewShelfSelected={onNewShelfSelected}
-                  book={book}
-                  shelf={book.shelf}
-                />
-              </li>
-            ))}
+            {Boolean(books.length) ? (
+              books.map(book => (
+                <li key={book.id}>
+                  <Book
+                    onNewShelfSelected={onNewShelfSelected}
+                    book={book}
+                    shelf={book.shelf}
+                  />
+                </li>
+              ))
+            ) : (
+              <p>No results</p>
+            )}
           </ol>
         </div>
       </div>
