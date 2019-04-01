@@ -7,10 +7,11 @@ class BookshelfChanger extends Component {
     onNewShelfSelected(selectedShelf, bookId);
   };
   render() {
-    const { shelf } = this.props;
+    const { shelf = "move" } = this.props;
+    console.log(shelf);
     return (
       <div className="book-shelf-changer">
-        <select value={shelf} onChange={this.onShelfChange}>
+        <select defaultValue={shelf} onChange={this.onShelfChange}>
           <option value="move" disabled>
             Move to...
           </option>
