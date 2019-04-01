@@ -29,7 +29,9 @@ A new browser window will open displaying the app. If it does not open a new win
 
 ## Usage
 
-This application is intended to allow users to organize the books that they are currently reading, would like to read, or have already read. This application also allows for users to search a predefined set of search terms (found in the `SEARCH_TERMS.md` file).
+This application is intended to allow users to organize the books that they are currently reading, would like to read, or have already read. You may click the down carrot inside the circle of each book to toggle between these different states. 
+
+This application also allows for users to search a predefined set of search terms (found in the `SEARCH_TERMS.md` file). Each of the books that are in the search results can also be added to the main page so that they can be organized in the same manner as the default books.
 
 ## Resources Used
 
