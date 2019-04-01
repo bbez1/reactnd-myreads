@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BookshelfChanger from "./BookshelfChanger";
 
 class Book extends Component {
   render() {
@@ -15,8 +16,9 @@ class Book extends Component {
             }}
           />
           <BookshelfChanger />
-        <div className="book-title">Ender's Game</div>
-        <div className="book-authors">Orson Scott Card</div>
+          <div className="book-title">Ender's Game</div>
+          <div className="book-authors">Orson Scott Card</div>
+        </div>
       </div>
     );
   }
