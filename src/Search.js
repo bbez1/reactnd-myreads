@@ -32,6 +32,9 @@ class Search extends Component {
     const query = evt.target.value;
     if (query) {
       search(query).then(response => {
+        if (response.error) {
+          return;
+        }
         this.setState({
           books: this.shelfSelectedLogic(response)
         });
