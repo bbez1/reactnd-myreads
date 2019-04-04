@@ -9,15 +9,13 @@ class Search extends Component {
   };
 
   shelfSelectedLogic = books => {
-    //getall books id from groupedbooks
-    //run through all books from response
-    //check if there's a match and then add the shelf to the books array;
+    // getall books id from groupedbooks
+    // run through all books from response
+    // check if there's a match and then add the shelf to the books array;
     const { groupedBooks } = this.props;
-    //gb id groupedBooks[gb].id
     const updateBookShelf = books.map(book => {
       Object.keys(groupedBooks).map(groupShelf => {
         groupedBooks[groupShelf].forEach(element => {
-          // console.log(book.id === element.id, book.id, element.id);
           if (book.id === element.id) {
             book.shelf = groupShelf;
           }
@@ -48,7 +46,6 @@ class Search extends Component {
 
   render() {
     const { books } = this.state;
-    console.log(books);
     const { onNewShelfSelected } = this.props;
     return (
       <div className="search-books">
