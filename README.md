@@ -2,6 +2,12 @@
 
 This project is the final project in the "React Fundamentals" course in the Udacity React Nanodegree.
 
+## Mockup
+
+I created a basic mockup for the project to help me determine which components I would need to create.
+
+See the (Figma MyReads Mockup)[https://www.figma.com/file/ZLr5F9fPXz5d6f3JPRhKXB5g/MyReads?node-id=0%3A1]
+
 ## Installation
 
 In order to run this application, first clone the repository and change directory into the application's root folder.
